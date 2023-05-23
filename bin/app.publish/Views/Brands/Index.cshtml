@@ -1,0 +1,25 @@
+﻿@model List<WebApplication1.Models.Brand>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/AdminLayoutPage.cshtml";
+}
+
+<h2 class="mt-5">Brands</h2>
+<table class="table">
+    <tr>
+        <th>Brand ID</th>
+        <th>Brand Name</th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.BrandID</td>
+            <td>@item.BrandName</td>
+            <td><a href="/Brands/EditBrand/@item.BrandID">Edit</a> | <a href="/Brands/Delete/@item.BrandID">Delete</a></td>
+        </tr>
+    }
+</table>
+<div class="d-grid gap-2 mx-auto">
+    <a href="~/Brands/AddBrand"><button class="btn btn-primary" type="button">Add Item</button></a>
+</div>

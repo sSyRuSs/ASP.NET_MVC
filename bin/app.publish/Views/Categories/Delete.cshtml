@@ -1,0 +1,18 @@
+﻿@model WebApplication1.Models.Category
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/AdminLayoutPage.cshtml";
+}
+
+<h2 class="mt-5">Delete</h2>
+<form action="/Categories/Delete/@Model.CatID" method="post">
+    <input type="hidden" name="Id" value="@Model.CatID" />
+    <table class="table">
+        <tr>
+            <th>Name</th>
+            <td>@Model.CatName</td>
+        </tr>
+    </table>
+    <button type="submit" class="btn btn-success">Delete</button>
+    <a href="/Categories/Index" class="btn btn-danger">Cancel</a>
+</form>

@@ -1,0 +1,21 @@
+﻿@model List<WebApplication1.Identity.AppUser>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/AdminLayoutPage.cshtml";
+}
+
+<h2 class="mt-5">Users</h2>
+<table class="table table-bordered">
+    <tr>
+        <th>User Name</th>
+        <th>Email</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.UserName</td>
+            <td>@item.Email</td>
+        </tr>
+    }
+</table>
+

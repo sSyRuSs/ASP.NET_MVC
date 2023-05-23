@@ -1,0 +1,124 @@
+﻿9@model WebApplication1.Models.Product
+@{
+    ViewBag.Title = "EditItem";
+    Layout = "~/Views/Shared/ProductLayoutPage.cshtml";
+}
+
+<h2 class="mt-5">Edit</h2>
+<form action="/Admin/EditItem/@Model.ProductID" method="post" enctype="multipart/form-data">
+    <div class="row">
+        <input type="hidden" name="ProductID" value="@Model.ProductID" />
+
+        <div class="col-md-6">
+            <label for="ProductName">Name</label>
+            <input class="form-control"
+                   type="text"
+                   name="ProductName"
+                   id="ProductName"
+                   placeholder="Name"
+                   value="@Model.ProductName" />
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <label for="ProductImage">Image</label>
+            <input class="form-control"
+                   type="file"
+                   name="ProductImage"
+                   id="ProductImage"
+                   value="@Model.ProductImage" />
+        </div>
+        <div class="col-md-6">
+            <label for="ProductPrice">Price</label>
+            <input class="form-control"
+                   type="number"
+                   name="ProductPrice"
+                   id="ProductPrice"
+                   placeholder="Price"
+                   value="@Model.ProductPrice" />
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <label for="BrandID">Brand</label>
+            <select class="form-control"
+                    name="BrandID"
+                    id="BrandID">
+                @foreach (var brand in ViewBag.Brands)
+                {
+                    if (brand.BrandID == Model.BrandID)
+                    {
+                        <option value="@brand.BrandID" selected>@brand.BrandName</option>
+                    }
+                    else
+                    {
+                        <option value="@brand.BrandID">@brand.BrandName</option>
+                    }
+                }
+            </select>
+        </div>
+        <div class="col-md-6">
+            <label for="CatID">Category</label>
+            <select class="form-control"
+                    name="CatID"
+                    id="CatID">
+                @foreach (var cat in ViewBag.Categories)
+                {
+                    if (cat.CatID == Model.CatID)
+                    {
+                        <option value="@cat.CatID" selected>@cat.CatName</option>
+                    }
+                    else
+                    {
+                        <option value="@cat.CatID">@cat.CatName</option>
+                    }
+                }
+            </select>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <label for="ProductDescription">Description</label>
+            <input class="form-control"
+                   type="text"
+                   name="ProductDescription"
+                   id="ProductDescription"
+                   placeholder="Description"
+                   value="@Model.ProductDescription" />
+        </div>
+        <div class="col-md-6">
+            <label for="ProductQuantity">Quantity</label>
+            <input class="form-control"
+                   type="number"
+                   name="ProductQuantity"
+                   id="ProductQuantity"
+                   placeholder="Quantity"
+                   value="@Model.ProductQuantity" />
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <label for="ProductStatus">Status</label>
+            <select class="form-control"
+                    name="ProductStatus"
+                    id="ProductStatus">
+                @if (Model.ProductStatus == "Còn Hàng")
+                {
+                    <option value="Còn Hàng" selected>Còn Hàng</option>
+                    <option value="Hết Hàng">Hết Hàng</option>
+                }
+                else
+                {
+                    <option value="Còn Hàng">Còn Hàng</option>
+                    <option value="Hết Hàng" selected>Hết Hàng</option>
+                }
+            </select>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-success">Save</button>
+    <a href="/Admin/Index" class="btn btn-danger">Cancel</a>
+</form>

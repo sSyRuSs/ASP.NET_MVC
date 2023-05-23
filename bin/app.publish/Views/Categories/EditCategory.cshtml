@@ -1,0 +1,25 @@
+﻿@model WebApplication1.Models.Category
+@{
+    ViewBag.Title = "EditCategory";
+    Layout = "~/Views/Shared/AdminLayoutPage.cshtml";
+}
+
+<h2 class="mt-5">Edit Category</h2>
+<form action="/Categories/EditCategory/@Model.CatID" method="post" @*enctype="multipart/form-data"*@>
+    <div class="row">
+        <input type="hidden" name="CatId" value="Model.CatId" />
+
+        <div class="col-md-6">
+            <label for="CatName">Name</label>
+            <input class="form-control"
+                   type="text"
+                   name="CatName"
+                   id="CatName"
+                   placeholder="Name"
+                   value="@Model.CatName" />
+        </div>
+    </div>
+    <button type="submit" class="btn btn-success">Save</button>
+    <a href="/Categories/Index" class="btn btn-danger">Cancel</a>
+</form>
+

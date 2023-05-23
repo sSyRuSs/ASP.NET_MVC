@@ -1,0 +1,33 @@
+﻿
+@{
+    ViewBag.Title = "AddCategory";
+    Layout = "~/Views/Shared/AdminLayoutPage.cshtml";
+}
+
+<h2 class="mt-5">Add Category</h2>
+<form action="/Categories/AddCategory" method="post" enctype="multipart/form-data">
+    <div class="row">
+        <!--<div class="col-md-6">
+            <label for="CatID">Id</label>
+            <input class="form-control"
+                   type="number"
+                   name="CatID"
+                   id="CatID"
+                   placeholder="Id" />-->
+            @*@Html.ValidationMessage(row => row.ProId)*@
+        <!--</div>-->
+
+        <div class="col-md-6">
+            <label for="CatName">Name</label>
+            <input class="form-control"
+                   type="text"
+                   name="CatName"
+                   id="CatName"
+                   placeholder="Name" />
+            @*@Html.ValidationMessage(row => row.ProName)*@
+        </div>
+    </div>
+    <button type="submit" class="btn btn-success">Create</button>
+    <a href="/Categories/Index" class="btn btn-danger">Cancel</a>
+</form>
+

@@ -1,0 +1,96 @@
+﻿@model List<WebApplication1.Models.Product>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/ProductLayoutPage.cshtml";
+}
+@*@{
+    string iconClass = "";
+    if (ViewBag.IconClass == "fa-sort-desc")
+    {
+        iconClass = "fa-sort-asc";
+    }
+    else
+    {
+        iconClass = "fa-sort-desc";
+    }
+}*@
+<ul class="nav justify-content-center mt-5 bg-light fixed-top">
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Clothings</a>
+        <ul class="dropdown-menu">
+            @foreach (var item in Model)
+            {
+                <li><select class="dropdown-item">@item.Category.CatName</select></li>
+                
+            }
+
+        </ul>
+    </li>
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Brands</a>
+        <ul class="dropdown-menu">
+            @foreach (var item in Model)
+            {
+                <li><select class="dropdown-item">@item.Brand.BrandName</select></li>
+
+            }
+
+        </ul>
+    </li>
+</ul>
+<div class="row row-cols-1 row-cols-md-5 g-4">
+    @foreach (var item in Model)
+    {
+        <div class="col">
+            <div class="card m-5" style="width: 18rem;">
+                <img src="~/Image/@item.ProductImage" class="card-img-top" @*alt="@item.ProName"*@>
+                <div class="card-body">
+                    <h5 class="card-title">@item.ProductName</h5>
+                    <p class="card-text">@item.Brand.BrandName</p>
+                    <p class="card-text">Giá: @item.ProductPrice.Value.ToString("C")</p>
+                    <p class="card-text">Số lượng: @item.ProductQuantity</p>
+                    <a href="/Products/Details/@item.ProductID" class="btn btn-primary">Xem chi tiết</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+@*<nav aria-label="Page navigation example" class=" mt-4">
+    @{
+        int Prev = ViewBag.Page - 1;
+        if (Prev <= 0)
+        {
+            Prev = 1;
+        }
+        int Next = ViewBag.Page + 1;
+        if (Next > ViewBag.NoOfPage)
+        {
+            Next = ViewBag.NoOfPage;
+        }
+    }
+    <ul class="pagination justify-content-center">
+        <li class="page-item active">
+            <a class="page-link" href="/Products/Index?page=@Prev">Previous</a>
+        </li>
+        @for (int i = 0; i < ViewBag.NoOfPage; i++)
+        {
+            if (i + 1 == ViewBag.Page)
+            {
+
+
+                <li class="page-item active"><a class="page-link" href="/Products/Index?page=@(i+1)">@(i+1)</a></li>
+            }
+            else
+            {
+                <li class="page-item "><a class="page-link" href="/Products/Index?page=@(i+1)">@(i+1)</a></li>
+            }
+
+        }
+        <li class="page-item">
+            <a class="page-link" href="/Products/Index?page=@Next">Next</a>
+        </li>
+    </ul>
+</nav>*@
+@*<div class="d-grid gap-2 mx-auto">
+    <a href="~/Products/AddItem"><button class="btn btn-primary" type="button">Add Item</button></a>
+</div>*@

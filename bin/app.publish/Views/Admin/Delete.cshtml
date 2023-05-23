@@ -1,0 +1,22 @@
+﻿@model WebApplication1.Models.Product
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/ProductLayoutPage.cshtml";
+}
+
+<h2 class="mt-5">Delete</h2>
+<form action="/Admin/Delete/@Model.ProductID" method="post">
+    <input type="hidden" name="Id" value="@Model.ProductID" />
+    <table class="table">
+        <tr>
+            <th>Name</th>
+            <td>@Model.ProductName</td>
+        </tr>
+        <tr>
+            <th>Price</th>
+            <td>@Model.ProductPrice</td>
+        </tr>
+    </table>
+    <button type="submit" class="btn btn-success">Delete</button>
+    <a href="/Admin/Index" class="btn btn-danger">Cancel</a>
+</form>

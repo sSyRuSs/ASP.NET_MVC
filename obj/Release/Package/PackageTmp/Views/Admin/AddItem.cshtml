@@ -1,0 +1,114 @@
+﻿
+@{
+    ViewBag.Title = "AddItem";
+    Layout = "~/Views/Shared/ProductLayoutPage.cshtml";
+}
+
+<h2 class="mt-5">Create</h2>
+<form action="/Admin/AddItem" method="post" enctype="multipart/form-data">
+    <div class="row">
+        <div class="col-md-6">
+            <label for="ProductID">Id</label>
+            <input class="form-control"
+                   type="text"
+                   name="ProductID"
+                   id="ProductID"
+                   placeholder="Id" />
+            @*@Html.ValidationMessage(row => row.ProId)*@
+        </div>
+
+        <div class="col-md-6">
+            <label for="ProName">Name</label>
+            <input class="form-control"
+                   type="text"
+                   name="ProductName"
+                   id="ProductName"
+                   placeholder="Name" />
+            @*@Html.ValidationMessage(row => row.ProName)*@
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <label for="ProductImage">Image</label>
+            <input class="form-control"
+                   type="file"
+                   name="file"
+                   id="file" />
+        </div>
+
+        <div class="col-md-6">
+            <label for="ProductPrice">Price</label>
+            <input class="form-control"
+                   type="number"
+                   name="ProductPrice"
+                   id="ProductPrice"
+                   placeholder="Price" />
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <label for="BrandId">BrandID</label>
+            <select class="form-control"
+                    name="BrandID"
+                    id="BrandID">
+                <option value="">Select</option>
+                @foreach (var brand in ViewBag.brands)
+                {
+                    <option value="@brand.BrandID">
+                        @brand.BrandName
+                    </option>
+                }
+            </select>
+        </div>
+
+        <div class="col-md-6">
+            <label for="CatId">Category</label>
+            <select class="form-control"
+                    name="CatID"
+                    id="CatID">
+                <option value="">Select</option>
+                @foreach (var cat in ViewBag.categories)
+                {
+                    <option value="@cat.CatID">@cat.CatName</option>
+                }
+            </select>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <label for="ProductDescription">Description</label>
+            <input class="form-control"
+                   type="text"
+                   name="ProductDescription"
+                   id="ProductDescription"
+                   placeholder="ProductDescription" />
+        </div>
+
+        <div class="col-md-6">
+            <label for="ProductQuantity">Quantity</label>
+            <input class="form-control"
+                   type="number"
+                   name="ProductQuantity"
+                   id="ProductQuantity"
+                   placeholder="Quantity" />
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <label for="ProductStatus">Status</label>
+            <select class="form-control"
+                    name="ProductStatus"
+                    id="ProductStatus">
+                <option value="">Please Select</option>
+                <option value="Còn Hàng">Còn Hàng</option>
+                <option value="Hết Hàng">Hết Hàng</option>
+            </select>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-success">Create</button>
+    <a href="/Admin/Index" class="btn btn-danger">Cancel</a>
+</form>
+

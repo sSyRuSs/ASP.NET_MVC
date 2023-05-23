@@ -1,0 +1,25 @@
+﻿@model WebApplication1.Models.Brand
+@{
+    ViewBag.Title = "EditBrand";
+    Layout = "~/Views/Shared/AdminLayoutPage.cshtml";
+}
+
+<h2 class="mt-5">Edit Brand</h2>
+<form action="/Brands/EditBrand/@Model.BrandID" method="post" @*enctype="multipart/form-data"*@>
+    <div class="row">
+        <input type="hidden" name="BrandID" value="Model.BrandID" />
+    </div>
+        <div class="col-md-6">
+            <label for="BrandName">Name</label>
+            <input class="form-control"
+                   type="text"
+                   name="BrandName"
+                   id="BrandName"
+                   placeholder="Name"
+                   value="@Model.BrandName" />
+        </div>
+    </div>
+    <button type="submit" class="btn btn-success">Save</button>
+    <a href="/Brands/Index" class="btn btn-danger">Cancel</a>
+</form>
+
